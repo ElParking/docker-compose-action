@@ -1,5 +1,6 @@
+import { v2 as compose } from 'docker-compose'
+
 const core = require("@actions/core");
-const compose = require("docker-compose");
 const utils = require("./utils");
 
 try {
