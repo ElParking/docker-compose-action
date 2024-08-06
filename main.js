@@ -1,5 +1,4 @@
-import { v2 as compose } from 'docker-compose'
-
+const  { v2 } = require("docker-compose");
 const core = require("@actions/core");
 const utils = require("./utils");
 //const path = require("path");
@@ -23,8 +22,8 @@ try {
 
   const promise =
     services.length > 0
-      ? compose.upMany(services, options)
-      : compose.upAll(options);
+      ? v2.upMany(services, options)
+      : v2.upAll(options);
 
   promise
     .then(() => {
@@ -40,7 +39,7 @@ try {
 
       if (testCommand && testContainer) {
         setTimeout(() => {
-          const test = compose.exec(testContainer, testCommand, {
+          const test = v2.exec(testContainer, testCommand, {
             config: composeFiles,
           });
 

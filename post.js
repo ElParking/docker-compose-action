@@ -1,5 +1,4 @@
-import { v2 as compose } from 'docker-compose'
-
+const  { v2 } = require("docker-compose");
 const core = require("@actions/core");
 const utils = require("./utils");
 
@@ -18,7 +17,7 @@ try {
     commandOptions: utils.parseFlags(core.getInput("down-flags")),
   };
 
-  compose.down(options).then(
+  v2.down(options).then(
     () => {
       console.log("compose removed");
     },
